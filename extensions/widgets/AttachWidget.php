@@ -10,7 +10,8 @@ use yii\base\Model;
 class AttachWidget extends Widget
 {
 
-    public $flashUrl;
+    public $model;
+    public $attribute;
 
     public function init()
     {
