@@ -1,6 +1,7 @@
 <?php
 /**
  * 数据库 修复issue-101
+ * 数据库 配置文件
  */
 return [
     'class' => 'yii\db\Connection',
