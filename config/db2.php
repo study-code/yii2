@@ -1,6 +1,6 @@
 <?php
 /**
- * 数据库 配置文件
+ * 数据库
  */
 return [
     'class' => 'yii\db\Connection',
