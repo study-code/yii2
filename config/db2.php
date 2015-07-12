@@ -1,6 +1,6 @@
 <?php
 /**
- * 数据库
+ * 数据库 这是dev分支
  */
 return [
     'class' => 'yii\db\Connection',
