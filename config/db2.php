@@ -1,6 +1,6 @@
 <?php
 /**
- * 数据库 这是dev分支
+ * 数据库 修复issue-101
  */
 return [
     'class' => 'yii\db\Connection',
