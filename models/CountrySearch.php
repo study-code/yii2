@@ -27,6 +27,8 @@ class CountrySearch extends Country
         ];
     }
 
+
+
     public function scenarios()
     {
         // bypass 父类实现的scenarios()
@@ -47,12 +49,7 @@ class CountrySearch extends Country
             return $dataProvider;
         }
 
-        $query->joinWith(['extend' => function($query) { $query->from(['country' => 'extend']); }]);
-// 使关联列的排序生效
-        $dataProvider->sort->attributes['country.caption'] = [
-            'asc' => ['country.caption' => SORT_ASC],
-            'desc' => ['country.caption' => SORT_DESC],
-        ];
+
 
         // 通过添加过滤器来调整查询语句
         $query->andFilterWhere(['code' => $this->code]);

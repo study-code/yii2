@@ -21,6 +21,11 @@ class Country extends \yii\db\ActiveRecord
         return '{{%country}}';
     }
 
+    public static function getDb()
+    {
+        return Yii::$app->db2;
+    }
+
     /**
      * @inheritdoc
      */

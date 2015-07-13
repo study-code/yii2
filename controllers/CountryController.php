@@ -10,6 +10,7 @@ namespace app\controllers;
 use app\models\Country;
 use yii\web\Controller;
 use app\models\CountrySearch;
+use yii\db\Query;
 
 class CountryController extends Controller
 {
@@ -26,12 +27,54 @@ class CountryController extends Controller
 
     function actionTest()
     {
-        $country = new Country();
-        //var_dump($country);
-        $country->on(Country::EVENT_INIT, function () {
-            echo 'hello';
-        });
-        $this->trigger(Country::EVENT_INIT);
+        $db2 = \Yii::$app->db2;
+        $rows = (new Query())->select('*')->from('country')->limit(10)->all($db2);
+
+        $count = (new Query())->from('country')->count('*', $db2);//查询当前country表总数
+
+        //select查询部分使用数组
+        //$query = (new Query())->select(['country_id','country'])->from('country');
+        //$command = $query->createCommand($db2);
+        //echo $command->sql;//查看当前的SQL文件
+
+        //列合并
+        //$query = (new Query())->select(['CONCAT(country_id, country) AS country_full'])->from('country');
+        //$command = $query->createCommand($db2);
+        //echo $command->sql;
+
+        //where andWhere filterWhere andFilterWhere orFilterWhere
+        //$query = new Query();
+        //$country_value = 'China';
+        //$query->where(['country_id'=>23]);//此处不支持绑定
+        //$query->andWhere(['like','country','']);
+
+        //添加andWhere条件 不会移除条件中的空值
+//        if ($country_value) {
+//            $query->andWhere(['like', 'country', $country_value]);
+//        }
+
+        // filterWhere() 最大的区别是从提供的条件中移除空值
+        //$query->filterWhere(['country'=>$country_value]);
+        //$query->filterWhere(['like', 'country', $country_value]);
+        //$query->orFilterWhere(['country'=>'Colombia']);
+
+        //var_dump($query);exit;
+        //$query->from('country');
+        //$command = $query->createCommand($db2);
+        //$result = $command->queryAll();
+        //echo $command->sql;exit;
+        //var_dump($result);exit;
+
+
+        //批量查询
+        //$query = (new Query())
+        //    ->from('country')
+        //    ->orderBy('country_id');
+
+        //foreach ($query->batch(100,$db2) as $countries) {
+        //    var_dump($countries);//第一次先取出100条数据，第二次在取出100条，不足100条的，直接显示
+        //}
+
     }
 
     function person_say_hello($event)
@@ -64,7 +107,6 @@ class CountryController extends Controller
         $db2 = \Yii::$app->db2;
         var_dump($db2);
     }
-
 
 
 }
