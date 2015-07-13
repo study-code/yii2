@@ -49,9 +49,9 @@ class CountryController extends Controller
         //$query->andWhere(['like','country','']);
 
         //添加andWhere条件 不会移除条件中的空值
-//        if ($country_value) {
-//            $query->andWhere(['like', 'country', $country_value]);
-//        }
+        //if ($country_value) {
+        //$query->andWhere(['like', 'country', $country_value]);
+        //}
 
         // filterWhere() 最大的区别是从提供的条件中移除空值
         //$query->filterWhere(['country'=>$country_value]);
@@ -75,6 +75,17 @@ class CountryController extends Controller
         //    var_dump($countries);//第一次先取出100条数据，第二次在取出100条，不足100条的，直接显示
         //}
 
+        //返回 yii\db\ActiveQuery 实例,并向AR实例里填充数据
+        //$countries = Country::find()->indexBy('country_id')->all();
+        //var_dump($countries);
+
+        //返回 AR 总数
+        //$count = Country::find()->count();
+        //var_dump($count);
+
+
+        
+        return $this->render('test');
     }
 
     function person_say_hello($event)
