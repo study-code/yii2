@@ -64,4 +64,10 @@ class Country extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Caption::className(),['country_code'=>'code']);
     }
+
+    public function getAddress()
+    {
+        return $this->hasMany(Address::className(),['city_id'=>'city_id'])
+                    ->viaTable('city',['country_id'=>'country_id']);
+    }
 }

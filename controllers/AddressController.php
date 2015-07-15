@@ -16,7 +16,7 @@ class AddressController extends Controller
     function actionIndex()
     {
         $address = Address::find()->setCache(true)->asArray()->one();
-        Common::dump($address);
+        //Common::dump($address);
     }
 
 

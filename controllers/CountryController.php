@@ -84,7 +84,14 @@ class CountryController extends Controller
         //var_dump($count);
 
 
-        
+//        $country = new Country();
+//        $country->load();
+
+
+        //
+        $country = Country::findOne(1);
+        $address = $country->address;
+        var_dump($address);
         return $this->render('test');
     }
 
